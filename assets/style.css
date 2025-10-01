@@ -1,0 +1,775 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--c8);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--c1);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--c2);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+
+    --c1: #6C2BD9;
+    --c2: #842ace;
+    --c3: #8f20e4 ;
+    --c4: rgba(157, 78, 221, 0.2);
+    --c5: #F8F9FC;
+    --c6: #1A1A1A;
+    --c7: #E0E0E0;
+    --c8: #0e0e0e;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--c1) var(--c8);
+}
+
+body{
+    background: var(--c8);
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.bg-circle {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at center,
+        rgba(157, 78, 221, 0.6),
+        rgba(108, 43, 217, 0.3),
+        rgba(199, 125, 255, 0));
+      border-radius: 50%;
+      filter: blur(150px);
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+.nav {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3%;
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+    background: var(--c4);
+    padding: 10px 30px;
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: var(--c1) 1.5px solid; 
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--c1);
+    transition: all 0.3s ease;
+  transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav a:hover {
+    color: var(--c2);
+}
+
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--c1);
+    transition: width 0.3s ease;
+}
+
+.nav a.active::after {
+    width: 100%;
+}
+
+
+#discord-btn {
+    background: var(--c1);
+    color: var(--c5);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: var(--c1) 1.5px solid;
+    box-shadow: 0 0 10px 2px var(--c1);
+}
+#discord-btn:hover {
+    transform: scale(1.1);
+}
+
+
+.nav a.active {
+    color: var(--c2);
+}
+
+.nav a.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--c2);
+    border-radius: 2px;
+    margin-top: 2px;
+}
+
+.Bio {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: flex-start;
+    backdrop-filter: blur(10px);
+    padding-left: 15%;
+}
+
+.Bio .bio-text {
+    position: relative;  
+    top: 1%;
+    right: 15%;
+    float: left;
+
+}
+
+.Bio .bio-text h1 {
+    text-align: left;  
+    font-size: 5rem;
+    margin-bottom: -10px;
+    background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
+    animation: gradient 5s ease infinite;
+}
+
+#name-bio {
+    text-shadow: 0 0 1px var(--c1), 0 0 1px var(--c1), 0 0 10px var(--c1);
+}
+
+.Bio .bio-text p {
+    position: relative;
+    left: 0%;
+    text-align: left;
+    font-size: 1.5rem;
+    color: var(--c7);
+    line-height: 1.5;
+}
+
+.profile-card {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 328px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--c1);
+    box-shadow: 0 0 10px var(--c1);
+}
+
+.profile-card .baner {
+    width: 100%;
+    height: 120px;
+    border-radius: 0 0 10px 10px;
+}
+
+.profile-card .profile-pic {
+    position: relative;
+    top: -65px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--c1);
+    margin: 0 auto;
+    box-shadow: 0 0 10px var(--c1);
+    background-size: cover;
+}
+
+.profile-card h2 {
+    position: relative;
+    top: -62px;
+    text-align: center;
+    margin-bottom: -30px;
+    text-shadow: 0 0 10px var(--c1);
+    background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 2rem;
+    color: transparent;
+}
+
+.profile-card p {
+    position: relative;
+    top: -30px;
+    text-align: center;
+    color: var(--c7);
+    font-size: 0.9rem;
+}
+
+.profile-card hr {
+    position: relative;
+    top: -20px;
+    border: 0;
+    height: 2px;
+    background: var(--c1);
+    margin: 10px 20px;
+    opacity: 20%;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    height: 60px;
+    bottom: 6%;
+    left: calc(50% - 60px);
+    width: 250px;
+}
+
+.card svg {
+  position: absolute;
+  display: flex;
+  width: 60%;
+  height: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  opacity: 1;
+  transition: opacity 0.25s;
+  z-index: 2;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.card .social-link1,.card .social-link2,.card .social-link3,.card .social-link4,.card .social-link5 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  color: whitesmoke;
+  font-size: 24px;
+  text-decoration: none;
+  transition: 0.25s;
+  border-radius: 50px;
+}
+
+.card svg {
+  transform: scale(1);
+}
+
+.card .social-link1:hover {
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+  animation: bounce_613 0.4s linear;
+}
+
+.card .social-link2:hover {
+  background-color: #242c34;
+   box-shadow: #242c34 0px 0px 10px 2px;
+  animation: bounce_613 0.4s linear;
+}
+
+.card .social-link3:hover {
+  background-color: #5865f2;
+  box-shadow: #5865f2 0px 0px 10px 2px;
+  animation: bounce_613 0.4s linear;
+}
+
+
+@keyframes bounce_613 {
+  40% {
+    transform: scale(1.4);
+  }
+
+  60% {
+    transform: scale(0.8);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.projects {
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px 0;
+    display: flex;
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+}
+
+.projects-container {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.projects-container h1 {
+    width: 100%;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--c7);
+}
+
+.projects-container h1::before,
+.projects-container h1::after {
+    content: "";
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--c1));
+}
+
+.projects-container h1::after {
+    background: linear-gradient(90deg, var(--c1), transparent);
+}
+
+.project-card {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--c1);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(108, 43, 217, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.project-card h2 {
+    color: var(--c7);
+    font-size: 1.5rem;
+}
+
+.project-card p {
+    color: var(--c7);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-stack span {
+    background: var(--c4);
+    border: var(--c1) 2px solid;
+    color: var(--c1);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.tech-stack span:hover {
+    transform: scale(1.05);
+}
+
+.project-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--c1);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-top: auto;
+}
+
+.project-link:hover {
+    background: var(--c2);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(108, 43, 217, 0.3);
+}
+
+.contact {
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    gap: 20px;
+}
+.contact h1 {
+    width: 100%;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--c7);
+}
+
+.contact h1::before,
+.contact h1::after {
+    content: "";
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--c1));
+}
+
+.contact h1::after {
+    background: linear-gradient(90deg, var(--c1), transparent);
+}
+.contact-container {
+    display: flex;
+    gap: 50px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.contact-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.contact-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid var(--c1);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--c1);
+    color: white;
+    font-size: 16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--c2);
+    box-shadow: 0 0 10px 2px var(--c2);
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: var(--c1);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: var(--c2);
+    transform: translateY(-2px);
+}
+
+.discord-invite {
+    background: rgba(88, 101, 242, 0.2);
+    border: 2px solid #5865F2;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+.discord-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.discord-invite h3 {
+    color: white;
+    font-size: 24px;
+}
+
+.discord-invite p {
+    color: #ffffff99;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.discord-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #5865F2;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.discord-btn:hover {
+    background: #4752C4;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+}
+
+
+.footer {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--c7);
+}
+
+.footer h1::before,
+.footer h1::after {
+    content: "";
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--c1));
+}
+
+.footer h1::after {
+    background: linear-gradient(90deg, var(--c1), transparent);
+}
+
+.footer p {
+    color: var(--c7);
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+    .projects-container, .contact-container {
+        width: 90%;
+    }
+    
+    .Bio {
+        padding: 100px 50px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .Bio {
+        flex-direction: column;
+        gap: 30px;
+        padding: 100px 20px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Bio .bio-text {
+        position: static;
+        float: none;
+        right: 0;
+        text-align: center;
+        margin-top: 100px;
+        width: 100%;
+    }
+
+    .Bio .bio-text h1 {
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    .Bio .bio-text p {
+        text-align: center;
+        width: 100%;
+    }
+
+    .profile-card {
+        display: none; /* Hide profile card on mobile */
+    }
+
+    .projects-container {
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .contact-left, .contact-right {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .discord-invite {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav {
+        width: 95%;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .nav a {
+        font-size: 14px;
+    }
+
+    .bio-text h1 {
+        font-size: 2rem;
+    }
+
+    .profile-card {
+        width: 260px;
+        height: 320px;
+    }
+
+    .profile-card .profile-pic {
+        width: 90px;
+        height: 90px;
+    }
+
+    .profile-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .profile-card p {
+        font-size: 0.8rem;
+    }
+
+    .card {
+        width: 180px;
+        height: 50px;
+    }
+
+    .card svg {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .Bio {
+        padding: 150px 20px 50px;
+    }
+    
+    .nav {
+        background: rgba(0, 0, 0, 0.9);
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .Bio {
+        height: auto;
+        min-height: 100vh;
+        padding: 120px 20px 50px;
+    }
+
+    .profile-card {
+        margin-bottom: 50px;
+    }
+}
