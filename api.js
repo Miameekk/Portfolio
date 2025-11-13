@@ -1,5 +1,6 @@
 // Użyj Railway URL gdy jest dostępny, w przeciwnym razie localhost
-const API_URL = 'https://discord-portfolio-bot-production.up.railway.app/api';
+// Użyj Railway URL gdy jest dostępny, w przeciwnym razie localhost
+const API_URL = 'https://portfolio-production-6d0c.up.railway.app/api';
 
 let vouches = [];
 let currentSlide = 0;
