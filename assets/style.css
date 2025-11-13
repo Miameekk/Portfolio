@@ -969,7 +969,9 @@ body{
 .vouch-stars {
     font-size: 1.2rem;
     margin: 0.5rem 0;
-    line-height: 1;
+    line-height: 1.5;
+    display: block;
+    color: var(--c7);
 }
 
 .vouch-description {

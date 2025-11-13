@@ -99,11 +99,15 @@ client.on('interactionCreate', async interaction => {
 
         // Generowanie gwiazdek - emoji które działa wszędzie
         const stars = '⭐'.repeat(rating);
-
+        
         // Tworzenie embeda
         const embed = new EmbedBuilder()
             .setColor('#c300ff')
-            .setDescription(`${stars}\n\n${description}`)
+            .setTitle('New Vouch!')
+            .addFields(
+                { name: 'Rating', value: stars, inline: false },
+                { name: 'Review', value: description, inline: false }
+            )
             .setThumbnail(userAvatar)
             .setFooter({ 
                 text: `Opinia od ${interaction.user.username}`,
