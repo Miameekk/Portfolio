@@ -36,10 +36,10 @@ const commands = [
         .setDescription('Dodaj opinię')
         .addIntegerOption(option =>
             option.setName('rating')
-                .setDescription('Ocena od 1 do 10')
+                .setDescription('Ocena od 1 do 6')
                 .setRequired(true)
                 .setMinValue(1)
-                .setMaxValue(10))
+                .setMaxValue(6))
         .addStringOption(option =>
             option.setName('opis')
                 .setDescription('Opis opinii')
