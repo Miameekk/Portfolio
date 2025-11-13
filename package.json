@@ -6,7 +6,7 @@
   "scripts": {
     "start:bot": "node bot/index.js",
     "start:api": "node api/server.js",
-    "start": "concurrently \"npm run start:bot\" \"npm run start:api\"",
+    "start": "node start.js",
     "dev": "concurrently \"nodemon bot/index.js\" \"nodemon api/server.js\""
   },
   "keywords": [
