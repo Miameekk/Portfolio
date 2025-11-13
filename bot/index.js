@@ -115,6 +115,9 @@ client.on('interactionCreate', async interaction => {
             })
             .setTimestamp();
 
+        // Najpierw odpowiadamy na interakcję (mamy tylko 3 sekundy!)
+        await interaction.deferReply({ flags: 64 });
+
         // Zapisanie do bazy danych
         try {
             const vouch = new Vouch({
@@ -131,10 +134,10 @@ client.on('interactionCreate', async interaction => {
             const vouchChannel = await client.channels.fetch(process.env.VOUCH_DISPLAY_CHANNEL_ID);
             await vouchChannel.send({ embeds: [embed] });
 
-            await interaction.reply({ content: '✅ Opinia została dodana!', flags: 64 });
+            await interaction.editReply({ content: '✅ Opinia została dodana!' });
         } catch (error) {
             console.error('Błąd zapisywania opinii:', error);
-            await interaction.reply({ content: '❌ Wystąpił błąd podczas dodawania opinii.', flags: 64 });
+            await interaction.editReply({ content: '❌ Wystąpił błąd podczas dodawania opinii.' });
         }
     }
 });
