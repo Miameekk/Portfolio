@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<body>
+    <div class="login-conteiner">
+        <form action="#" class="login-form">
+            <h1>Login</h1>
+            <div class="input-group">
+                <i class="fa-regular fa-user"></i>
+                <input type="text" id="username" max="" required placeholder="Username">
+            </div>
+            <div class="input-group">
+                <i class="fa-regular fa-lock-keyhole"></i>
+                <input type="password" id="password" required placeholder="Password">
+            </div>
+            <div class ="checkbox-group">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember Me</label>
+            </div>
+            <div class="remowe-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-btn" id="login-btn">Login</button>
+        </form>
+    </div>
+    <script>
+        let adminname = "12345";
+        let adminpass = "12345";
+
+
+
+        document.getElementById("Login-btn").addEventListener("click", validate);
+
+        function validate(){
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            if ( username == adminname){
+                alert("Login successfully");
+                return false;
+            }
+            else{
+                alert("Login failed");
+            }
+}
+    </script>
+</body>
+</html>

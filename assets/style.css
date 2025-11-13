@@ -27,11 +27,14 @@
     --c1: #6C2BD9;
     --c2: #842ace;
     --c3: #8f20e4 ;
-    --c4: rgba(157, 78, 221, 0.2);
+    --c4: #9d4edd33;
     --c5: #F8F9FC;
     --c6: #1A1A1A;
-    --c7: #E0E0E0;
+    --c7: #e0e0e0;
+    --c9: #e0e0e08a;
     --c8: #0e0e0e;
+    --c10:#d92b2b;
+    --c11:rgba(221, 78, 78, 0.2);
 
     scrollbar-width: thin;
     scrollbar-color: var(--c1) var(--c8);
@@ -142,6 +145,47 @@ body{
     margin-top: 2px;
 }
 
+/* Hamburger menu styles */
+.hamburger {
+    position: fixed;
+    top: 3%;
+    right: 5%;
+    z-index: 2000;
+    background: var(--c4);
+    border: 2px solid var(--c1);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--c1);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 .Bio {
     width: 100%;
     height: 100vh;
@@ -163,7 +207,7 @@ body{
 
 .Bio .bio-text h1 {
     text-align: left;  
-    font-size: 5rem;
+    font-size: 7rem;
     margin-bottom: -10px;
     background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
     -webkit-background-clip: text;
@@ -179,10 +223,10 @@ body{
 
 .Bio .bio-text p {
     position: relative;
-    left: 0%;
+    left: 1%;
     text-align: left;
-    font-size: 1.5rem;
-    color: var(--c7);
+    font-size: 2rem;
+    color: var(--c9);
     line-height: 1.5;
 }
 
@@ -327,6 +371,25 @@ body{
   }
 }
 
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card,
+.skill-card,
+.contact-form,
+.discord-invite {
+  animation: slideInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
 .projects {
     width: 100%;
     min-height: 100vh;
@@ -371,19 +434,22 @@ body{
 
 .project-card {
     width: 300px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--c1);
+    background: var(--c4);
+    border: 2px solid var(--c1);
     border-radius: 15px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(108, 43, 217, 0.15);
+    min-height: 420px;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px rgba(108, 43, 217, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(108, 43, 217, 0.35);
+    border-color: var(--c2);
 }
 
 .project-image {
@@ -404,6 +470,8 @@ body{
     font-size: 0.9rem;
     line-height: 1.5;
 }
+
+
 
 .tech-stack {
     display: flex;
@@ -426,9 +494,30 @@ body{
     transform: scale(1.05);
 }
 
+.during{
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+    
+}
+
+
 .project-link {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 5px;
     background: var(--c1);
     color: white;
     text-decoration: none;
@@ -436,12 +525,48 @@ body{
     transition: all 0.3s ease;
     text-align: center;
     margin-top: auto;
+    font-weight: 600;
 }
 
 .project-link:hover {
     background: var(--c2);
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(108, 43, 217, 0.3);
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(108, 43, 217, 0.5);
+}
+
+.project-link:active {
+    transform: scale(0.95);
+}
+
+.project-links {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* push links to bottom of card */
+}
+
+.project-links a {
+    flex: 1 1 0; /* equal width buttons */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-link.alt {
+    background: transparent;
+    color: var(--c1);
+    border: 2px solid var(--c1);
+}
+
+@media (max-width: 480px) {
+    .project-links {
+        flex-direction: column;
+    }
+    .project-links a {
+        width: 100%;
+        flex: none;
+    }
 }
 
 .contact {
@@ -503,10 +628,17 @@ body{
 }
 
 .contact-form {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--c4);
     padding: 30px;
     border-radius: 15px;
     border: 2px solid var(--c1);
+    box-shadow: 0 0 15px rgba(108, 43, 217, 0.15);
+    transition: all 0.3s ease;
+}
+
+.contact-form:hover {
+    box-shadow: 0 0 25px rgba(108, 43, 217, 0.35);
+    border-color: var(--c2);
 }
 
 .contact-form input,
@@ -515,10 +647,16 @@ body{
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border: 2px solid var(--c1);
     color: white;
     font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .contact-form input:focus,
@@ -526,6 +664,7 @@ body{
     outline: none;
     border-color: var(--c2);
     box-shadow: 0 0 10px 2px var(--c2);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 .contact-form button {
@@ -536,22 +675,31 @@ body{
     background: var(--c1);
     color: white;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .contact-form button:hover {
     background: var(--c2);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(108, 43, 217, 0.4);
 }
 
 .discord-invite {
-    background: rgba(88, 101, 242, 0.2);
-    border: 2px solid #5865F2;
+    background: var(--c4);
+    border: 2px solid var(--c1);
     border-radius: 15px;
     padding: 30px;
     text-align: center;
     width: 100%;
+    box-shadow: 0 0 15px rgba(108, 43, 217, 0.15);
+    transition: all 0.3s ease;
+}
+
+.discord-invite:hover {
+    box-shadow: 0 0 25px rgba(108, 43, 217, 0.35);
+    border-color: var(--c2);
 }
 
 .discord-header {
@@ -576,7 +724,7 @@ body{
 .discord-btn {
     display: inline-block;
     padding: 12px 30px;
-    background: #5865F2;
+    background: var(--c1);
     color: white;
     text-decoration: none;
     border-radius: 25px;
@@ -585,9 +733,9 @@ body{
 }
 
 .discord-btn:hover {
-    background: #4752C4;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+    background: var(--c2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(108, 43, 217, 0.4);
 }
 
 
@@ -625,7 +773,96 @@ body{
     font-size: 0.9rem;
 }
 
-/* Responsive Styles */
+#skills {
+    width: 100%;
+    min-height: 100vh;
+    padding: 120px 20px;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    margin-bottom: -50px;
+    justify-content: center;
+    align-items: center;
+}
+
+#skills h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 150px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--c7);
+    width: 100%;
+}
+
+#skills h2::before,
+#skills h2::after {
+    content: "";
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--c1));
+}
+
+#skills h2::after {
+    background: linear-gradient(90deg, var(--c1), transparent);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.skill-card {
+    background: var(--c4);
+    border: 2px solid var(--c1);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(108, 43, 217, 0.15);
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(108, 43, 217, 0.35);
+    border-color: var(--c2);
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.bar {
+    background: var(--c4);
+    border-radius: 10px;
+    overflow: hidden;
+    height: 10px;
+    border: 1px solid var(--c1);
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+    width: 0;
+    border-radius: 10px;
+    transition: width 2s ease;
+}
+
+.bar-fill.visible {
+    width: var(--level);
+}
+
 @media screen and (max-width: 1200px) {
     .projects-container, .contact-container {
         width: 90%;
@@ -634,18 +871,72 @@ body{
     .Bio {
         padding: 100px 50px;
     }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 600px;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
     .nav {
-        width: 90%;
-        padding: 15px;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        left: auto;
+        transform: none;
+        width: 280px;
+        height: 100vh;
+        flex-direction: column;
+        padding: 80px 30px 30px;
+        gap: 25px;
+        border-radius: 0;
+        border-left: 2px solid var(--c1);
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        background: rgba(14, 14, 14, 0.98);
+        backdrop-filter: blur(20px);
+        align-items: flex-start;
+        box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+        overflow-y: auto;
+    }
+
+    .nav.active {
+        right: 0;
+    }
+
+    .nav a {
+        font-size: 18px;
+        width: 100%;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--c4);
+    }
+
+    #discord-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
     }
 
     .Bio {
         flex-direction: column;
         gap: 30px;
-        padding: 100px 20px;
+        padding: 120px 20px 50px;
         text-align: center;
         justify-content: center;
         align-items: center;
@@ -656,7 +947,7 @@ body{
         float: none;
         right: 0;
         text-align: center;
-        margin-top: 100px;
+        margin-top: 50px;
         width: 100%;
     }
 
@@ -668,87 +959,179 @@ body{
     .Bio .bio-text p {
         text-align: center;
         width: 100%;
+        font-size: 1.3rem;
+        left: 0;
     }
 
     .profile-card {
-        display: none; /* Hide profile card on mobile */
+        display: none;
     }
 
     .projects-container {
-        padding: 20px;
-        align-items: center;
-        justify-content: center;
+        width: 95%;
+        padding: 20px 10px;
+        gap: 25px;
+    }
+
+    .projects-container h1 {
+        font-size: 2rem;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 400px;
+        min-height: auto;
+    }
+
+    .contact h1 {
+        font-size: 2rem;
     }
 
     .contact-container {
         flex-direction: column;
-        padding: 20px;
+        padding: 20px 10px;
         align-items: center;
         justify-content: center;
         gap: 30px;
+        width: 95%;
     }
 
     .contact-left, .contact-right {
         width: 100%;
-        max-width: 400px;
+        max-width: 450px;
     }
 
     .contact-form {
         width: 100%;
+        padding: 25px;
     }
 
     .discord-invite {
         width: 100%;
-        max-width: 400px;
+        max-width: 450px;
         margin: 0 auto;
+        padding: 25px;
     }
 
     .footer {
         margin-top: 50px;
         text-align: center;
+        padding: 30px 20px;
+    }
+
+    .footer h1 {
+        font-size: 2rem;
+    }
+
+    #skills h2 {
+        font-size: 2rem;
+        margin-bottom: 80px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 400px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .nav {
-        width: 95%;
-        padding: 10px;
-        gap: 15px;
+    .hamburger {
+        right: 4%;
+        width: 42px;
+        height: 42px;
     }
 
-    .nav a {
+    .hamburger span {
+        width: 22px;
+    }
+
+    .nav {
+        width: 85%;
+    }
+
+    .Bio .bio-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .Bio .bio-text p {
+        font-size: 1.1rem;
+    }
+
+    .projects-container {
+        padding: 15px 5px;
+    }
+
+    .projects-container h1 {
+        font-size: 1.7rem;
+    }
+
+    .project-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 18px;
+    }
+
+    .project-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .project-card p {
+        font-size: 0.85rem;
+    }
+
+    .tech-stack span {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+
+    .contact h1 {
+        font-size: 1.7rem;
+    }
+
+    .contact-container {
+        width: 100%;
+        padding: 15px 5px;
+    }
+
+    .contact-form,
+    .discord-invite {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px;
         font-size: 14px;
     }
 
-    .bio-text h1 {
-        font-size: 2rem;
+    .skill-header {
+        flex-direction: row;
+        gap: 0;
+        align-items: center;
+        font-size: 0.9rem;
     }
 
-    .profile-card {
-        width: 260px;
-        height: 320px;
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 100%;
+        padding: 0 10px;
     }
 
-    .profile-card .profile-pic {
-        width: 90px;
-        height: 90px;
+    #skills h2 {
+        font-size: 1.7rem;
+        margin-bottom: 60px;
     }
 
-    .profile-card h2 {
-        font-size: 1.8rem;
+    .footer h1 {
+        font-size: 1.5rem;
     }
 
-    .profile-card p {
-        font-size: 0.8rem;
-    }
-
-    .card {
-        width: 180px;
-        height: 50px;
-    }
-
-    .card svg {
-        font-size: 20px;
+    .footer p {
+        font-size: 0.75rem;
+        padding: 0 15px;
     }
 }
 
@@ -772,4 +1155,88 @@ body{
     .profile-card {
         margin-bottom: 50px;
     }
+}
+
+.thanks-h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--c7);
+}
+
+.thanks-p {
+    color: var(--c7);
+    opacity: 0.8;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Lightbox / Gallery styles */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+.lightbox.open {
+    display: flex;
+}
+.lightbox-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lightbox .lb-img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+.lb-close {
+    position: absolute;
+    top: -24px;
+    right: -24px;
+    background: var(--c1);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(108,43,217,0.3);
+}
+.lb-prev, .lb-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lb-prev { left: -60px; }
+.lb-next { right: -60px; }
+
+@media (max-width: 700px) {
+    .lb-prev { left: 8px; }
+    .lb-next { right: 8px; }
+    .lb-close { top: 8px; right: 8px; }
 }

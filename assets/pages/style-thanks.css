@@ -1,0 +1,112 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--c8);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--c1);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--c2);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+
+    --c1: #6C2BD9;
+    --c2: #842ace;
+    --c3: #8f20e4 ;
+    --c4: rgba(137, 64, 196, 0.151);
+    --c5: #F8F9FC;
+    --c6: #1A1A1A;
+    --c7: #E0E0E0;
+    --c8: #0e0e0e;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--c1) var(--c8);
+}
+
+body{
+    background: var(--c8);
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.bg-circle {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at center,
+        rgba(157, 78, 221, 0.6),
+        rgba(108, 43, 217, 0.3),
+        rgba(199, 125, 255, 0));
+      border-radius: 50%;
+      filter: blur(150px);
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+.thanks-h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: var(--c7);
+}
+
+.thanks-p {
+    color: var(--c7);
+    opacity: 0.8;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.thanks-container {
+    background: var(--c4);
+    border: var(--c2) 2px solid;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+    margin: auto;
+}
+
+.thanks-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 150px;
+    background: var(--c4);
+    font-size: 1rem;
+    color: white;
+    border: var(--c1) 2px solid;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.thanks-button:hover {
+    background: var(--c1);
+    transform: scale(1.1);
+}
