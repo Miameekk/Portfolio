@@ -1,0 +1,31 @@
+{
+  "name": "discord-portfolio-bot",
+  "version": "1.0.0",
+  "description": "Bot Discord z systemem opinii i projektów",
+  "main": "bot/index.js",
+  "scripts": {
+    "start:bot": "node bot/index.js",
+    "start:api": "node api/server.js",
+    "start": "concurrently \"npm run start:bot\" \"npm run start:api\"",
+    "dev": "concurrently \"nodemon bot/index.js\" \"nodemon api/server.js\""
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "portfolio",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "mongoose": "^8.0.3",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "concurrently": "^8.2.2"
+  }
+}
