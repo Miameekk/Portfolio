@@ -1,5 +1,4 @@
-// Użyj Railway URL gdy jest dostępny, w przeciwnym razie localhost
-// Użyj Railway URL gdy jest dostępny, w przeciwnym razie localhost
+
 const API_URL = 'https://portfolio-production-6d0c.up.railway.app/api';
 
 let vouches = [];
@@ -37,8 +36,11 @@ function displayVouches() {
         const card = document.createElement('div');
         card.className = 'vouch-card';
         
-        const stars = '⭐'.repeat(vouch.rating);
+        const rating = Number(vouch.rating) || 0;
+        const stars = '⭐'.repeat(rating);
         const date = new Date(vouch.createdAt).toLocaleDateString('pl-PL');
+        
+        console.log('Rating:', rating, 'Stars:', stars); // Debug
         
         card.innerHTML = `
             <div class="vouch-header">
