@@ -36,11 +36,13 @@ function displayVouches() {
         const card = document.createElement('div');
         card.className = 'vouch-card';
         
+        console.log('Vouch data:', vouch); // Debug full vouch object
+        
         const rating = Number(vouch.rating) || 0;
         const stars = '⭐'.repeat(rating);
         const date = new Date(vouch.createdAt).toLocaleDateString('pl-PL');
         
-        console.log('Rating:', rating, 'Stars:', stars); // Debug
+        console.log('Rating:', rating, 'Stars:', stars, 'Stars length:', stars.length); // Debug
         
         card.innerHTML = `
             <div class="vouch-header">
