@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:3000/api';
+// Użyj Railway URL gdy jest dostępny, w przeciwnym razie localhost
+const API_URL = 'https://discord-portfolio-bot-production.up.railway.app/api';
 
 let vouches = [];
 let currentSlide = 0;
